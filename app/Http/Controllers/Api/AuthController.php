@@ -45,7 +45,7 @@ class AuthController extends Controller
 
         //encrypt pwd before in database
         try {
-            //$user->name = $request->name;
+            $user->name = $request->name;
             $user->email = $request->email;
             $user->password = $encryptedPass;
             $user-> save();
