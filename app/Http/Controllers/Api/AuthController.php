@@ -79,4 +79,54 @@ class AuthController extends Controller
 
 }
 
+    //this function saves user name, lastname and photo 
+    public function saveUserInfo(Request $request){
+        $user = user::find(Auth::user()->id);
+        $user->name = $request->name;
+        //$user->email = $request->email;
+
+        //$user->lastname = $request->lastname;
+        $photo = '';
+
+
+        //this function saves user name, lastname and photo 
+        //if($request->photo!= ''){
+            //user time fot photo name to prevent name dublication
+            //$photo = time().'.jpg';
+            //decode photo string and save to storage/profiles
+            //file_put_contents('storage/profiles/'.$photo,base64_decode($request->photo));
+            //$user->photo = $photo;
+        //}
+
+        $user->update();
+
+        return response()->json([
+            'success' => true,
+            'photo' => $photo
+        ]);
+
+
+
+    }
+
+    public function userinfo() {    
+        try {
+        JWTAuth::invalidate(JWTAuth::parseToken($request->token));
+        $user = user::find(Auth::user()->id);
+        $user->name = $request->name;
+        $user->update();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'get user info success'
+        ]);
+
+    }
+    catch(Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => ''.$e
+        ]);
+    }
+    }
 }
