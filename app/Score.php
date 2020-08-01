@@ -2,13 +2,12 @@
 
 namespace App;
 
-use App\Comment;
-use App\Post;
-use App\Like;
+use App\Score;
+
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Score extends Model
 {
     //
     public function user(){

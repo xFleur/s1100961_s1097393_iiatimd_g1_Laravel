@@ -17,15 +17,6 @@ class PostsController extends Controller
         $post = new Post;
         $post->user_id = Auth::user()->id;
         $post->desc = $request->desc;
-        
-        //check if post has a photo
-        if ($request->photo != '') {
-            //chose a unique name for a photo
-            $photo = time().'jpg';
-            // need to link storage photo to public
-            file_put_contents('storage/posts/'.$photo,base64_decode($request->photo));
-            $post->photo = $photo;
-        }
 
         //mistake 
         $post->save();
@@ -64,10 +55,7 @@ class PostsController extends Controller
                 'message' => 'unauthorized access (delete)'
             ]);
         }
-        //check if post has photo to delete
-        if($post->photo != ''){
-            Storage::delete('public/posts/'.$post->photo);
-        }
+     
         $post->delete();
         return response()->json([
             'success' => true,
@@ -84,13 +72,7 @@ class PostsController extends Controller
             $post['commentsCount'] = count($posts->comments);
             //likes count
             $post['likesCount'] = count($posts->likes);
-            //check if user liked his own post 
-            $post['selflike'] = false;
-            foreach($post->likes as $like){
-                if($like->user_id == Auth::user()->id){
-                    $post['selflike'] = true;
-                }
-            }
+        
         }
        
         return response()->json([
