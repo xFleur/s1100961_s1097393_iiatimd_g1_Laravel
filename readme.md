@@ -1,4 +1,4 @@
-<h1> IIATIMD_project_1920 van Mark en Melissa </h1>
+<h1> IIATIMD_project_1920 van Mark en Melissa v1</h1>
 
 Deze repo omvat de laravel API
 - voor het inloggen
