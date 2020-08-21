@@ -54,10 +54,10 @@ class User extends Authenticatable implements JWTSubject
     }
 
     //highscore
-    public function scores()
-    {
-      return $this->hasMany(Score::class);
-    }
+    // public function scores()
+    // {
+    //   return $this->hasMany(Score::class);
+    // }
     //posts
     public function posts()
     {
