@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Comment;
 use App\Post;
+use App\Score;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -51,11 +52,18 @@ class User extends Authenticatable implements JWTSubject
     {
       return [];
     }
+
+    //highscore
+    public function scores()
+    {
+      return $this->hasMany(Score::class);
+    }
     //posts
     public function posts()
     {
       return $this->hasMany(Post::class);
     }
+
     public function comments()
     {
       return $this->hasMany(Comment::class);
