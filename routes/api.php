@@ -23,6 +23,10 @@ Route::get('logout','Api\AuthController@logout');
 Route::post('save_user_info','Api\AuthController@saveUserInfo')->middleware('jwtAuth');
 Route::get('userinfo','Api\AuthController@userinfo')->middleware('jwtAuth');
 
+//highscore
+Route::post('save_user_score','Api\ScoreController@save_user_score');
+Route::get('leaderboard','Api\ScoreController@leaderboard');
+
 // //post
 // Route::post('posts/create','Api\PostsController@create')->middleware('jwtAuth');
 // Route::post('posts/delete','Api\PostsController@delete')->middleware('jwtAuth');
