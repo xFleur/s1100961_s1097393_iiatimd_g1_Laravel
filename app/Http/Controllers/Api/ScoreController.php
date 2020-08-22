@@ -36,7 +36,7 @@ class ScoreController extends Controller
 
 
 //this function showes all user high scores leaderboard
-    public function leaderboard() {    
+    public function leaderboard2() {    
         try {
         $score->highscore = $request->highscore;
         $score->leadname = $request->leadname;
@@ -54,6 +54,20 @@ class ScoreController extends Controller
             'message' => ''.$e
         ]);
     }
+    }
+
+    public function leaderboard(){
+        $scores = Score::orderBy('id','desc')->get();
+        foreach($scores as $score){
+            //get all highscores and leadnames
+            $score->highscore;
+            $score->leadname; 
+        }
+
+        return response()->json([
+            'success' => true,
+            'posts' => $scores
+        ]);
     }
 
 
