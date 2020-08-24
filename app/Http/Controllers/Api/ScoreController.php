@@ -76,7 +76,7 @@ class ScoreController extends Controller
         Score::whereNotNull('id')->delete();
         return response()->json([
             'success' => true,
-            'message' => 'post deleted'
+            'message' => 'leaderboard deleted'
         ]);
     }
 }
