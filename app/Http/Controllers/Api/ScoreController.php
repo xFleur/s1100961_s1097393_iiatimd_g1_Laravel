@@ -71,4 +71,17 @@ class ScoreController extends Controller
     }
 
 
-}
+    public function del_all_score($id=0){
+        if($id != 0){
+            // Delete
+            Score::deleteData($id);
+      
+            
+            
+          }
+          return response()->json([
+            'success' => true,
+            'posts' => $scores
+        ]);
+        }
+    }
