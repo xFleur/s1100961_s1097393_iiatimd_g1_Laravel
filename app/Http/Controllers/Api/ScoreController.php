@@ -81,7 +81,8 @@ class ScoreController extends Controller
           }
           return response()->json([
             'success' => true,
-            'posts' => $scores
+            'posts' => 'del leaderbaord  success'
         ]);
         }
+        
     }
