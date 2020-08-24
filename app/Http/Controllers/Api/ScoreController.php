@@ -71,18 +71,12 @@ class ScoreController extends Controller
     }
 
 
-    public function del_all_score($id=0){
-        if($id != 0){
-            // Delete
-            Score::deleteData($id);
-      
-            
-            
-          }
-          return response()->json([
-            'success' => true,
-            'posts' => 'del leaderbaord  success'
-        ]);
+    public function del_all_score(){
+        $highscores = DB::table('scores')->get();
+
+        foreach ($highscores as $highscore)
+        {
+            var_dump($highscore->leadname);
         }
-        
     }
+}
