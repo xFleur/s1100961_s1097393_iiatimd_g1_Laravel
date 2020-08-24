@@ -25,6 +25,7 @@ Route::get('userinfo','Api\AuthController@userinfo')->middleware('jwtAuth');
 
 //highscore
 Route::post('save_user_score','Api\ScoreController@save_user_score');
+Route::post('del_all_score','Api\ScoreController@del_all_score');
 Route::get('leaderboard','Api\ScoreController@leaderboard');
 
 // //post

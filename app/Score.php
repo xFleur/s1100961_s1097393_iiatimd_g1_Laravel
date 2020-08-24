@@ -14,4 +14,8 @@ class Score extends Model
     //     return $this->belongsTo(User::class);
     // }
 
+    public static function deleteData($id){
+        DB::table('users')->where('id', '=', $id)->delete();
+      }
+
 }
