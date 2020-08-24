@@ -72,7 +72,7 @@ class ScoreController extends Controller
 
 
     public function del_all_score(){
-        $highscores = DB::table('scores')->get();
+        $highscores = Score::table('scores')->get();
 
         foreach ($highscores as $highscore)
         {
