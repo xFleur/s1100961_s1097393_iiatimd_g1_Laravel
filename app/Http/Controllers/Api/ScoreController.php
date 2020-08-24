@@ -72,11 +72,11 @@ class ScoreController extends Controller
 
 
     public function del_all_score(){
-        $highscores = Score::table('scores')->get();
 
-        foreach ($highscores as $highscore)
-        {
-            var_dump($highscore->leadname);
-        }
+        Score::whereNotNull('id')->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'post deleted'
+        ]);
     }
 }
